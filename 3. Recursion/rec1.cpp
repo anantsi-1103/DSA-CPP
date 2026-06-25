@@ -58,6 +58,21 @@ int count_asc(int si, int ei)
 }
 
 
+int tilingWays(int n){
+    if(n == 0 || n == 1){
+        return 1;
+    }
+
+    return tilingWays(n-1) + tilingWays(n-2);
+}
+
+int ClimbingStairs(int n){
+    if(n == 0 || n == 1){
+        return 1;
+    }
+
+    return ClimbingStairs(n-1) + ClimbingStairs(n-2);
+}
 
 int main()
 {
@@ -72,7 +87,9 @@ int main()
 
     // cout<<fact(n)<<endl;
 
-    count_asc(5, 10);
+    // count_asc(5, 10);
+
+    cout<<ClimbingStairs(3)<<endl;
 
     return 0;
 }

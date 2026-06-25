@@ -56,7 +56,7 @@ string armstrong(int n)
     while (temp != 0)
     {
         int rem = temp % 10;
-        sum = sum  + rem * rem * rem;
+        sum = sum + rem * rem * rem;
         temp = temp / 10;
     }
 
@@ -70,6 +70,73 @@ string armstrong(int n)
     }
 }
 
+int maxProfit(int prices[], int size)
+{
+    int minPrice = prices[0];
+
+    int maxProfit = 0;
+
+    for (int i = 1; i < size; i++)
+    {
+        if (prices[i] < minPrice)
+        {
+            minPrice = prices[i];
+        }
+        int profit = prices[i] - minPrice;
+
+        if (profit > maxProfit)
+        {
+            maxProfit = profit;
+        }
+    }
+    return maxProfit;
+}
+
+int maxSubArray(int arr[], int size)
+{
+    int maxSum = INT_MIN; // -infinity
+
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = i; j < size; j++)
+        {
+            int sum = 0;
+
+            for (int k = i; k < j; k++)
+            {
+                sum += arr[k];
+            }
+
+            maxSum = max(maxSum, sum);
+        }
+    }
+
+    return maxSum;
+}
+
+int kadansAlgo(int arr[], int size)
+{
+    int cs = 0;
+    int ms = INT_MIN;
+
+    for (int i = 0; i < size; i++)
+    {
+        cs += arr[i];
+
+        if (cs > ms)
+        {
+            ms = cs;
+        }
+
+        if (cs < 0)
+        {
+            cs = 0;
+        }
+    }
+
+    return ms;
+}
+
 int main()
 {
 
@@ -79,6 +146,17 @@ int main()
 
     // cout<<pallindrome(121)<<endl;
 
-    cout << armstrong(153) << endl;
+    // cout << armstrong(153) << endl;
+
+    // int price[] = {7, 1, 5, 3, 6, 4};
+
+    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    // cout<<maxProfit(price,size)<<endl;
+
+    cout << maxSubArray(arr, size)<<endl;
+    cout << kadansAlgo(arr, size)<<endl;
     return 0;
 }
