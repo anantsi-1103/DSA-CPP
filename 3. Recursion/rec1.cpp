@@ -24,6 +24,7 @@ int sumByRec(int n)
     // kaam
     return n + sumByRec(n - 1);
 }
+
 int fact(int n)
 {
     // base case
@@ -56,7 +57,6 @@ int count_asc(int si, int ei)
     cout << si << endl;    // 5
     count_asc(si + 1, ei); // 6 , 10
 }
-
 
 int tilingWays(int n){
     if(n == 0 || n == 1){
