@@ -113,6 +113,48 @@ void print(Node *&head)
 
 // delete by count ->
 
+// count the nodes
+int count(Node *&head)
+{
+    int c = 0;
+
+    while (head)
+    {
+        c++;
+        head = head->next;
+    }
+
+    return c;
+}
+
+// reverse
+Node *reverse(Node *head)
+{
+    Node *prev = NULL;
+    Node *curr = head;
+
+    while (curr != NULL)
+    {
+        Node *next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    return prev;
+}
+
+void reverseList(Node *head)
+{
+    if (head == NULL)
+    {
+        return;
+    }
+
+    reverseList(head->next);
+    cout << head->data << " -> ";
+}
+
 int main()
 {
 
@@ -122,18 +164,22 @@ int main()
     insertAtHead(head, 20);
     insertAtTail(head, 33);
     insertAtHead(head, 54);
+    // print(head);
+
+    // insertAtTail(head, 35);
+
+    // print(head);
+
+    // deleteTail(head);
+
     print(head);
 
-    insertAtTail(head, 35);
+    // cout << search(head, 200) << endl;
+
+    head = reverse(head);
 
     print(head);
 
-    deleteTail(head);
-
-    print(head);
-
-    cout << search(head, 200) << endl;
-
-
+   
     return 0;
 }
