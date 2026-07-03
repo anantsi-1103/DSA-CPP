@@ -1,1 +1,0 @@
-sertAtHead(head, 10);
